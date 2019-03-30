@@ -33,8 +33,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LollipoUi">
+      <HintPath>C:\Users\Sonih\Downloads\LollipoUi\LollipoUi.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,16 +58,87 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tulpep.NotificationWindow, Version=1.1.25.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tulpep.NotificationWindow.1.1.25\lib\net40\Tulpep.NotificationWindow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\PopupMessage.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DashBoard.designer.cs">
+      <DependentUpon>DashBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\tbl_ProductMaster.cs">
+      <DependentUpon>TSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\tbl_SheetDetails.cs">
+      <DependentUpon>TSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\tbl_SheetMaster.cs">
+      <DependentUpon>TSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\tbl_UserLogin.cs">
+      <DependentUpon>TSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\tbl_UserProfile.cs">
+      <DependentUpon>TSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TSModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TSModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TSModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TSModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TSModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControl\AddProduct_SheetUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\.designer.cs">
+      <DependentUpon>AddProduct_SheetUC.cs</DependentUpon>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\SheetListUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\SheetListUC.designer.cs">
+      <DependentUpon>SheetListUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\ProductMasterUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\ProductMasterUC.designer.cs">
+      <DependentUpon>ProductMasterUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ProductMasterVM.cs" />
+    <Compile Include="ViewModel\SheetDetailsVM.cs" />
+    <Compile Include="ViewModel\SheetMasterVM.cs" />
+    <Compile Include="ViewModel\UserLoginVM.cs" />
+    <Compile Include="ViewModel\UserProfileVM.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DashBoard.resx">
+      <DependentUpon>DashBoard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,7 +147,25 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControl\AddProduct_SheetUC.resx">
+      <DependentUpon>AddProduct_SheetUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\SheetListUC.resx">
+      <DependentUpon>SheetListUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\ProductMasterUC.resx">
+      <DependentUpon>ProductMasterUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model\TSModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TSModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\TSModel.edmx.diagram">
+      <DependentUpon>TSModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +178,29 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Model\TSModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TSModel.edmx</DependentUpon>
+      <LastGenOutput>TSModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\TSModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TSModel.edmx</DependentUpon>
+      <LastGenOutput>TSModel.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\x-button.png" />
+    <None Include="Resources\info.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\refresh.png" />
+    <None Include="Resources\success.png" />
+    <None Include="Resources\iconfinder_info-alt_383122.png" />
+    <None Include="Resources\information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
