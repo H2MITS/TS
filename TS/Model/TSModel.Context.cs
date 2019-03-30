@@ -25,10 +25,10 @@ namespace TS.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<tbl_ProductMaster> tbl_ProductMaster { get; set; }
         public virtual DbSet<tbl_SheetDetails> tbl_SheetDetails { get; set; }
         public virtual DbSet<tbl_SheetMaster> tbl_SheetMaster { get; set; }
         public virtual DbSet<tbl_UserLogin> tbl_UserLogin { get; set; }
         public virtual DbSet<tbl_UserProfile> tbl_UserProfile { get; set; }
-        public virtual DbSet<tbl_ProductMaster> tbl_ProductMaster { get; set; }
     }
 }

@@ -22,8 +22,9 @@ namespace TS.Model
         public Nullable<decimal> rate { get; set; }
         public Nullable<System.DateTime> cDate { get; set; }
         public Nullable<System.DateTime> uDate { get; set; }
+        public Nullable<decimal> amt { get; set; }
     
-        public virtual tbl_SheetMaster tbl_SheetMaster { get; set; }
         public virtual tbl_ProductMaster tbl_ProductMaster { get; set; }
+        public virtual tbl_SheetMaster tbl_SheetMaster { get; set; }
     }
 }

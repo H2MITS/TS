@@ -78,6 +78,7 @@ namespace TS
             panelContainer.Controls.Add(uc);
             Dashboard.Instance.PnlContainer.Controls["ProductMasterUC"].BringToFront();
             uc.Show();
+            btnBack.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -93,6 +94,7 @@ namespace TS
             panelContainer.Controls.Add(uc);
             Dashboard.Instance.PnlContainer.Controls["SheetListUC"].BringToFront();
             uc.Show();
+            btnBack.Visible = false;
         }
 
         private void button6_Click(object sender, EventArgs e)

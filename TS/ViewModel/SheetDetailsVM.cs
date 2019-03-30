@@ -14,7 +14,9 @@ namespace TS.ViewModel
         public Nullable<long> pId { get; set; }
         public Nullable<decimal> qty { get; set; }
         public Nullable<decimal> weight { get; set; }
+
         public Nullable<decimal> rate { get; set; }
+        public Nullable<decimal> amt { get; set; }
         public Nullable<System.DateTime> cDate { get; set; }
         public Nullable<System.DateTime> uDate { get; set; }
     }

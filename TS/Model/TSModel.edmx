@@ -19,12 +19,13 @@
           <Key>
             <PropertyRef Name="sheetDetailsId" />
           </Key>
-          <Property Name="sheetDetailsId" Type="bigint" Nullable="false" />
+          <Property Name="sheetDetailsId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="sheetId" Type="bigint" />
           <Property Name="pId" Type="bigint" />
           <Property Name="qty" Type="decimal" Precision="18" Scale="2" />
           <Property Name="weight" Type="decimal" Precision="18" Scale="2" />
           <Property Name="rate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="amt" Type="decimal" Precision="18" Scale="2" />
           <Property Name="cDate" Type="datetime" />
           <Property Name="uDate" Type="datetime" />
         </EntityType>
@@ -128,10 +129,15 @@
     <edmx:ConceptualModels>
       <Schema Namespace="TSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="TSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_ProductMaster" EntityType="TSModel.tbl_ProductMaster" />
           <EntitySet Name="tbl_SheetDetails" EntityType="TSModel.tbl_SheetDetails" />
           <EntitySet Name="tbl_SheetMaster" EntityType="TSModel.tbl_SheetMaster" />
           <EntitySet Name="tbl_UserLogin" EntityType="TSModel.tbl_UserLogin" />
           <EntitySet Name="tbl_UserProfile" EntityType="TSModel.tbl_UserProfile" />
+          <AssociationSet Name="FK_tbl_SheetDetails_ProductMaster" Association="TSModel.FK_tbl_SheetDetails_ProductMaster">
+            <End Role="tbl_ProductMaster" EntitySet="tbl_ProductMaster" />
+            <End Role="tbl_SheetDetails" EntitySet="tbl_SheetDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbl_SheetDetails_SheetMaster" Association="TSModel.FK_tbl_SheetDetails_SheetMaster">
             <End Role="tbl_SheetMaster" EntitySet="tbl_SheetMaster" />
             <End Role="tbl_SheetDetails" EntitySet="tbl_SheetDetails" />
@@ -140,17 +146,23 @@
             <End Role="tbl_UserProfile" EntitySet="tbl_UserProfile" />
             <End Role="tbl_UserProfile1" EntitySet="tbl_UserProfile" />
           </AssociationSet>
-          <EntitySet Name="tbl_ProductMaster" EntityType="TSModel.tbl_ProductMaster" />
-          <AssociationSet Name="FK_tbl_SheetDetails_ProductMaster" Association="TSModel.FK_tbl_SheetDetails_ProductMaster">
-            <End Role="tbl_ProductMaster" EntitySet="tbl_ProductMaster" />
-            <End Role="tbl_SheetDetails" EntitySet="tbl_SheetDetails" />
-          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="tbl_ProductMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="rate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="cDate" Type="DateTime" Precision="3" />
+          <Property Name="uDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_SheetDetails" Relationship="TSModel.FK_tbl_SheetDetails_ProductMaster" FromRole="tbl_ProductMaster" ToRole="tbl_SheetDetails" />
+        </EntityType>
         <EntityType Name="tbl_SheetDetails">
           <Key>
             <PropertyRef Name="sheetDetailsId" />
           </Key>
-          <Property Name="sheetDetailsId" Type="Int64" Nullable="false" />
+          <Property Name="sheetDetailsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="sheetId" Type="Int64" />
           <Property Name="pId" Type="Int64" />
           <Property Name="qty" Type="Decimal" Precision="18" Scale="2" />
@@ -158,8 +170,9 @@
           <Property Name="rate" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="cDate" Type="DateTime" Precision="3" />
           <Property Name="uDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="tbl_SheetMaster" Relationship="TSModel.FK_tbl_SheetDetails_SheetMaster" FromRole="tbl_SheetDetails" ToRole="tbl_SheetMaster" />
           <NavigationProperty Name="tbl_ProductMaster" Relationship="TSModel.FK_tbl_SheetDetails_ProductMaster" FromRole="tbl_SheetDetails" ToRole="tbl_ProductMaster" />
+          <NavigationProperty Name="tbl_SheetMaster" Relationship="TSModel.FK_tbl_SheetDetails_SheetMaster" FromRole="tbl_SheetDetails" ToRole="tbl_SheetMaster" />
+          <Property Name="amt" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tbl_SheetMaster">
           <Key>
@@ -204,6 +217,18 @@
           <NavigationProperty Name="tbl_UserProfile1" Relationship="TSModel.FK_tbl_UserProfile_tbl_UserProfile" FromRole="tbl_UserProfile" ToRole="tbl_UserProfile1" />
           <NavigationProperty Name="tbl_UserProfile2" Relationship="TSModel.FK_tbl_UserProfile_tbl_UserProfile" FromRole="tbl_UserProfile1" ToRole="tbl_UserProfile" />
         </EntityType>
+        <Association Name="FK_tbl_SheetDetails_ProductMaster">
+          <End Type="TSModel.tbl_ProductMaster" Role="tbl_ProductMaster" Multiplicity="0..1" />
+          <End Type="TSModel.tbl_SheetDetails" Role="tbl_SheetDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ProductMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_SheetDetails">
+              <PropertyRef Name="pId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbl_SheetDetails_SheetMaster">
           <End Type="TSModel.tbl_SheetMaster" Role="tbl_SheetMaster" Multiplicity="0..1" />
           <End Type="TSModel.tbl_SheetDetails" Role="tbl_SheetDetails" Multiplicity="*" />
@@ -228,38 +253,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="tbl_ProductMaster">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="p_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="rate" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="cDate" Type="DateTime" Precision="3" />
-          <Property Name="uDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="tbl_SheetDetails" Relationship="TSModel.FK_tbl_SheetDetails_ProductMaster" FromRole="tbl_ProductMaster" ToRole="tbl_SheetDetails" />
-        </EntityType>
-        <Association Name="FK_tbl_SheetDetails_ProductMaster">
-          <End Type="TSModel.tbl_ProductMaster" Role="tbl_ProductMaster" Multiplicity="0..1" />
-          <End Type="TSModel.tbl_SheetDetails" Role="tbl_SheetDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_ProductMaster">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tbl_SheetDetails">
-              <PropertyRef Name="pId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TSModelStoreContainer" CdmEntityContainer="TSEntities">
+          <EntitySetMapping Name="tbl_ProductMaster">
+            <EntityTypeMapping TypeName="TSModel.tbl_ProductMaster">
+              <MappingFragment StoreEntitySet="tbl_ProductMaster">
+                <ScalarProperty Name="uDate" ColumnName="uDate" />
+                <ScalarProperty Name="cDate" ColumnName="cDate" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="p_Name" ColumnName="p_Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tbl_SheetDetails">
             <EntityTypeMapping TypeName="TSModel.tbl_SheetDetails">
               <MappingFragment StoreEntitySet="tbl_SheetDetails">
+                <ScalarProperty Name="amt" ColumnName="amt" />
                 <ScalarProperty Name="uDate" ColumnName="uDate" />
                 <ScalarProperty Name="cDate" ColumnName="cDate" />
                 <ScalarProperty Name="rate" ColumnName="rate" />
@@ -311,17 +325,6 @@
                 <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="userId" ColumnName="userId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_ProductMaster">
-            <EntityTypeMapping TypeName="TSModel.tbl_ProductMaster">
-              <MappingFragment StoreEntitySet="tbl_ProductMaster">
-                <ScalarProperty Name="uDate" ColumnName="uDate" />
-                <ScalarProperty Name="cDate" ColumnName="cDate" />
-                <ScalarProperty Name="rate" ColumnName="rate" />
-                <ScalarProperty Name="p_Name" ColumnName="p_Name" />
-                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

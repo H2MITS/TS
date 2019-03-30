@@ -29,14 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTotalRows = new LollipopLabel();
             this.lollipopLabel2 = new LollipopLabel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblError = new System.Windows.Forms.Label();
             this.btnSubmit = new LollipopButton();
             this.dgProductMaster = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtRate = new System.Windows.Forms.TextBox();
             this.txtpName = new System.Windows.Forms.TextBox();
             this.lollipopLabel3 = new LollipopLabel();
@@ -48,12 +54,8 @@
             this.lollipopButton2 = new LollipopButton();
             this.btnCancel = new LollipopButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.lblTotalRows = new LollipopLabel();
+            this.lblBtnError = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductMaster)).BeginInit();
@@ -62,6 +64,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lblBtnError);
             this.panel1.Controls.Add(this.lblTotalRows);
             this.panel1.Controls.Add(this.lollipopLabel2);
             this.panel1.Controls.Add(this.panel4);
@@ -82,6 +86,18 @@
             this.panel1.Size = new System.Drawing.Size(944, 558);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // lblTotalRows
+            // 
+            this.lblTotalRows.AutoSize = true;
+            this.lblTotalRows.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotalRows.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalRows.ForeColor = System.Drawing.Color.Black;
+            this.lblTotalRows.Location = new System.Drawing.Point(18, 481);
+            this.lblTotalRows.Name = "lblTotalRows";
+            this.lblTotalRows.Size = new System.Drawing.Size(17, 20);
+            this.lblTotalRows.TabIndex = 146;
+            this.lblTotalRows.Text = "0";
             // 
             // lollipopLabel2
             // 
@@ -136,21 +152,21 @@
             // 
             this.dgProductMaster.AllowUserToAddRows = false;
             this.dgProductMaster.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.dgProductMaster.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.dgProductMaster.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgProductMaster.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgProductMaster.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgProductMaster.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Goldenrod;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgProductMaster.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Goldenrod;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgProductMaster.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgProductMaster.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgProductMaster.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -162,10 +178,54 @@
             this.dgProductMaster.Location = new System.Drawing.Point(17, 159);
             this.dgProductMaster.Name = "dgProductMaster";
             this.dgProductMaster.ReadOnly = true;
+            this.dgProductMaster.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgProductMaster.Size = new System.Drawing.Size(916, 303);
             this.dgProductMaster.TabIndex = 136;
             this.dgProductMaster.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProductMaster_CellContentClick);
             this.dgProductMaster.DoubleClick += new System.EventHandler(this.dgProductMaster_DoubleClick);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "id";
+            this.Column1.HeaderText = "hiddenId";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "rowNo";
+            this.dataGridViewTextBoxColumn5.HeaderText = "SrNo";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 40;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "p_Name";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Product Name";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "rate";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Rate";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Width = 120;
+            // 
+            // Delete
+            // 
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Delete.HeaderText = "Action";
+            this.Delete.Image = global::TS.Properties.Resources.deleteButton;
+            this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Width = 56;
             // 
             // txtRate
             // 
@@ -179,11 +239,15 @@
             // 
             this.txtpName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtpName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtpName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtpName.Font = new System.Drawing.Font("Century Gothic", 11F);
             this.txtpName.Location = new System.Drawing.Point(146, 77);
             this.txtpName.Name = "txtpName";
             this.txtpName.Size = new System.Drawing.Size(781, 25);
             this.txtpName.TabIndex = 132;
+            this.txtpName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtpName_KeyPress);
+            this.txtpName.Leave += new System.EventHandler(this.txtpName_Leave);
             // 
             // lollipopLabel3
             // 
@@ -275,60 +339,27 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // Column1
+            // lblBtnError
             // 
-            this.Column1.DataPropertyName = "id";
-            this.Column1.HeaderText = "hiddenId";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
+            this.lblBtnError.AutoSize = true;
+            this.lblBtnError.Font = new System.Drawing.Font("Century Gothic", 8.25F);
+            this.lblBtnError.ForeColor = System.Drawing.Color.Red;
+            this.lblBtnError.Location = new System.Drawing.Point(143, 136);
+            this.lblBtnError.Name = "lblBtnError";
+            this.lblBtnError.Size = new System.Drawing.Size(259, 16);
+            this.lblBtnError.TabIndex = 147;
+            this.lblBtnError.Text = "* Do not insert \".00\". It will automatically added";
             // 
-            // dataGridViewTextBoxColumn5
+            // label1
             // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "rowNo";
-            this.dataGridViewTextBoxColumn5.HeaderText = "SrNo";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 40;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "p_Name";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Product Name";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "rate";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Rate";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            this.dataGridViewTextBoxColumn10.Width = 120;
-            // 
-            // Delete
-            // 
-            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Delete.HeaderText = "Action";
-            this.Delete.Image = global::TS.Properties.Resources.deleteButton;
-            this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
-            this.Delete.Width = 56;
-            // 
-            // lblTotalRows
-            // 
-            this.lblTotalRows.AutoSize = true;
-            this.lblTotalRows.BackColor = System.Drawing.Color.Transparent;
-            this.lblTotalRows.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRows.ForeColor = System.Drawing.Color.Black;
-            this.lblTotalRows.Location = new System.Drawing.Point(18, 481);
-            this.lblTotalRows.Name = "lblTotalRows";
-            this.lblTotalRows.Size = new System.Drawing.Size(17, 20);
-            this.lblTotalRows.TabIndex = 146;
-            this.lblTotalRows.Text = "0";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 8.25F);
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(382, 481);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(186, 16);
+            this.label1.TabIndex = 148;
+            this.label1.Text = "* Double Click on any row to edit";
             // 
             // ProductMasterUC
             // 
@@ -374,5 +405,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewImageColumn Delete;
         private LollipopLabel lblTotalRows;
+        private System.Windows.Forms.Label lblBtnError;
+        private System.Windows.Forms.Label label1;
     }
 }

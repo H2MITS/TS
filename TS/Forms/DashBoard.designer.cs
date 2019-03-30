@@ -84,7 +84,7 @@
             this.button4.Location = new System.Drawing.Point(3, 167);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(89, 53);
-            this.button4.TabIndex = 2;
+            this.button4.TabIndex = 1;
             this.button4.Text = " Item Sheet";
             this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button4.UseVisualStyleBackColor = true;
@@ -99,7 +99,7 @@
             this.button1.Location = new System.Drawing.Point(8, 96);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 48);
-            this.button1.TabIndex = 2;
+            this.button1.TabIndex = 0;
             this.button1.Text = "Cost List";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = true;
@@ -159,7 +159,7 @@
             this.button12.Location = new System.Drawing.Point(708, 15);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(74, 27);
-            this.button12.TabIndex = 2;
+            this.button12.TabIndex = 0;
             this.button12.Text = "Logout";
             this.button12.UseVisualStyleBackColor = true;
             // 
